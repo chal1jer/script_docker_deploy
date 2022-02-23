@@ -4,7 +4,7 @@ ENV container docker
 ENV LC_ALL C
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN echo 'deb http://deb.debian.org/debian stretch-backports main' >> /etc/apt/sources.list
+RUN echo 'deb http://deb.debian.org/debian buster-backports main' >> /etc/apt/sources.list
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends systemd python3 sudo bash net-tools openssh-server openssh-client vim git\
@@ -24,7 +24,7 @@ RUN systemctl set-default multi-user.target
 RUN sed -i 's#root:\*#root:sa3tHJ3/KuYvI#' /etc/shadow
 ENV init /lib/systemd/systemd
 VOLUME [ "/sys/fs/cgroup" ]
-
+# process central du container
 ENTRYPOINT ["/lib/systemd/systemd"]
 
 # docker run -tid --cap-add NET_ADMIN --cap-add SYS_ADMIN --publish-all=true -v /srv/data:/srv/html -v /sys/fs/cgroup:/sys/fs/cgroup:ro --name <nom_conteneur> -h <nom_conteneur> priximmo/debian_systemd:v1.0

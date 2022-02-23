@@ -7,7 +7,7 @@
 # Très pratique pour tester ansible
 # Attention  pour des raisons de sécurité ne convient pas 
 # en production
-# passwd: password
+# password : password
 #
 ###########################################################
 
@@ -47,7 +47,7 @@ createNodes() {
 		docker exec -ti $USER-debian-$i /bin/sh -c "mkdir  ${HOME}/.ssh && chmod 700 ${HOME}/.ssh && chown $USER:$USER $HOME/.ssh"
 	    docker cp $HOME/.ssh/id_rsa.pub $USER-debian-$i:$HOME/.ssh/authorized_keys
 	    docker exec -ti $USER-debian-$i /bin/sh -c "chmod 600 ${HOME}/.ssh/authorized_keys && chown $USER:$USER $HOME/.ssh/authorized_keys"
-		docker exec -ti $USER-debian-$i /bin/sh -c "echo '$USER   ALL=(ALL) NOPASSWD: ALL'>>/etc/sudoers" # faille de sécurité
+		docker exec -ti $USER-debian-$i /bin/sh -c "echo '$USER   ALL=(ALL) NOPASSWD: ALL'>>/etc/sudoers" # attention faille de sécurité
 		docker exec -ti $USER-debian-$i /bin/sh -c "service ssh start"
 		echo "Conteneur $USER-debian-$i créé"
 	done
