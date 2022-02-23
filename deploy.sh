@@ -17,6 +17,9 @@ if [ "$1" == "--create" ];then
 	nb_machines=1
 	[ "$2" != "" ] && nb_machines=$2
 
+    # récupération de l'id max
+	idmax=`docker ps -a --format '{{ .Names}}' | awk -F "-" -v user="$USER" '$0 ~ user"-alpine" {print $3}' | sort -m |head -1`
+
     # création des conteneurs
 	echo "Début de la création des conteneurs..."
 	for i in $(seq 1 $nb_machines);do 
