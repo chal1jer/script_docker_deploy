@@ -51,8 +51,13 @@ elif [ "$1" == "--drop" ];then
 # si option --infos
 elif [ "$1" == "--infos" ];then
     echo ""
-	echo " notre option est --infos"
+	echo "Informations sur les conteneurs :"
 	echo ""
+
+	for conteneur in $(docker ps -a | grep $USER-alpine | awk '{print $1}');do
+	  docker inspect -f ' => {{ .Name }} - {{ .NetworkSettings.IPAddress }}' $conteneur
+      done
+	  echo ""
 
 # si option --start
 elif [ "$1" == "--start" ];then
