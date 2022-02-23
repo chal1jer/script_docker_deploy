@@ -57,7 +57,7 @@ elif [ "$1" == "--infos" ];then
 # si option --start
 elif [ "$1" == "--start" ];then
     echo ""
-	echo " notre option est --start"
+	docker start $(docker ps -a | grep $USER-alpine | awk '{print $1}')
 	echo ""
 
 # si option --ansible
