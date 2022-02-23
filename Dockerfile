@@ -27,4 +27,4 @@ VOLUME [ "/sys/fs/cgroup" ]
 
 ENTRYPOINT ["/lib/systemd/systemd"]
 
-#docker run -tid --cap-add NET_ADMIN --cap-add SYS_ADMIN --publish-all=true -v /srv/data:/srv/html -v /sys/fs/cgroup:/sys/fs/cgroup:ro --name <nom_contneeur> -h <nom_conteneur> priximmo/debian_systemd:v1.0
+# docker run -tid --cap-add NET_ADMIN --cap-add SYS_ADMIN --publish-all=true -v /srv/data:/srv/html -v /sys/fs/cgroup:/sys/fs/cgroup:ro --name <nom_conteneur> -h <nom_conteneur> priximmo/debian_systemd:v1.0
