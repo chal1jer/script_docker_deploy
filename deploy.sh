@@ -4,7 +4,7 @@
 ###########################################################
 #
 # Description : déploiement à la volée de conteneurs docker
-# 
+# Attention ne convient pas en production
 #
 ###########################################################
 
